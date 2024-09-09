@@ -15,6 +15,8 @@ public class Cwindow extends JFrame {
     JPasswordField fieldPassword;
     Swindow server;
     CbackEnd clientBackend;
+    JScrollPane scrollMessage;
+
 
     public Cwindow(Swindow server){
 
@@ -23,6 +25,8 @@ public class Cwindow extends JFrame {
 
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //scrollMessage = new JScrollPane(this.server.logMessage);
 
         panLogin = new JPanel(new GridLayout(2,3));
         btnLogin = new JButton("Login");
@@ -67,6 +71,7 @@ public class Cwindow extends JFrame {
 
         add(panLogin, BorderLayout.NORTH);
         add(panMessage, BorderLayout.SOUTH);
+        //add(scrollMessage);
 
         setVisible(true);
     }

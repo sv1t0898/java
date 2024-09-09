@@ -9,7 +9,7 @@ public class Swindow extends JFrame{
 
     JPanel panBtn;
     JButton btnStart, btnStop;
-    JTextArea logMessage;
+    public JTextArea logMessage;
     JScrollPane scrollMessage;
 
     public SbackEnd backEnd;
@@ -31,7 +31,9 @@ public class Swindow extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 backEnd.srvStartStop(true);
-                logMessage.setText(logMessage.getText() + backEnd.getStatus("server") + "\n");
+                backEnd.setLogMessage("Старт сервер");
+                backEnd.getLogMessage(logMessage);
+                //logMessage.setText(logMessage.getText() + backEnd.getStatus("server") + "\n");
             }
         });
 
@@ -40,9 +42,13 @@ public class Swindow extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 backEnd.srvStartStop(false);
-                logMessage.setText(logMessage.getText() + backEnd.getStatus("server") + "\n");
+                backEnd.setLogMessage("Stop server.");
+                backEnd.getLogMessage(logMessage);
+                //logMessage.setText(logMessage.getText() + backEnd.getStatus("server") + "\n");
             }
         });
+
+
 
         panBtn = new JPanel(new GridLayout(1,2));
         panBtn.add(btnStart);

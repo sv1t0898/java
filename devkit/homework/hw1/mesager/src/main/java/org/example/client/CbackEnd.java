@@ -2,6 +2,7 @@ package org.example.client;
 
 import org.example.interfaсes.connection;
 
+import javax.swing.*;
 import java.util.HashMap;
 
 public class CbackEnd implements connection {
@@ -25,12 +26,12 @@ public class CbackEnd implements connection {
     }
 
     @Override
-    public void getLogMessage(HashMap LogMessage) {
+    public void getLogMessage(JTextArea logMessage) {
 
     }
 
     @Override
-    public void setLogMessage(HashMap LogMessage) {
+    public void setLogMessage(String message) {
 
     }
     public void getSrvStatus(){

@@ -2,12 +2,14 @@ package org.example.server;
 
 import org.example.interfaсes.connection;
 
+import javax.swing.*;
 import java.util.HashMap;
+import java.util.Map;
 
 public class SbackEnd implements connection {
 
     private HashMap<String, Boolean> onlineStatus = new HashMap<>();
-    private HashMap<String, String> logMessage = new HashMap<>();
+    private HashMap<Integer, String> logMessage = new HashMap<>();
 
     SbackEnd(){
         this.setStatus("server", false);
@@ -33,13 +35,18 @@ public class SbackEnd implements connection {
     }
 
     @Override
-    public void getLogMessage(HashMap LogMessage) {
+    public void getLogMessage(JTextArea logMessage) {
+        String entr = "";
+        for(Map.Entry<Integer, String> entry : this.logMessage.entrySet()){
+            entr += entry.getKey() + entry.getValue() + "\n";
+        }
+        logMessage.setText(entr);
 
     }
 
     @Override
-    public void setLogMessage(HashMap LogMessage) {
-
+    public void setLogMessage(String message) {
+        this.logMessage.put(this.logMessage.size() + 1, message);
     }
 
     public void srvStartStop(boolean status){
