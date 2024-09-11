@@ -16,7 +16,7 @@ public class Cwindow extends JFrame {
     Swindow server;
     CbackEnd clientBackend;
     JScrollPane scrollMessage;
-
+    JTextArea logMessage;
 
     public Cwindow(Swindow server){
 
@@ -26,7 +26,8 @@ public class Cwindow extends JFrame {
         setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        //scrollMessage = new JScrollPane(this.server.logMessage);
+        logMessage = new JTextArea(5,5);
+        scrollMessage = new JScrollPane(logMessage);
 
         panLogin = new JPanel(new GridLayout(2,3));
         btnLogin = new JButton("Login");
@@ -54,6 +55,20 @@ public class Cwindow extends JFrame {
 
             }
         });
+
+        panMessage = new JPanel(new GridLayout(1, 2));
+        btnSend = new JButton("send");
+        fieldMessage = new JTextField();
+
+        btnSend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                clientBackend.setLogMessage("[" + fieldUser.getText() + "]: " + fieldMessage.getText());
+                fieldMessage.setText("");
+                clientBackend.getLogMessage(logMessage);
+            }
+        });
+
         fieldPassword = new JPasswordField();
         panLogin.add(fieldIp);
         panLogin.add(fieldPort);
@@ -63,15 +78,13 @@ public class Cwindow extends JFrame {
         panLogin.add(btnLogin);
 
 
-        panMessage = new JPanel(new GridLayout(1, 2));
-        btnSend = new JButton("send");
-        fieldMessage = new JTextField();
+
         panMessage.add(fieldMessage);
         panMessage.add(btnSend);
 
         add(panLogin, BorderLayout.NORTH);
         add(panMessage, BorderLayout.SOUTH);
-        //add(scrollMessage);
+        add(scrollMessage);
 
         setVisible(true);
     }

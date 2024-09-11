@@ -7,6 +7,7 @@ import org.example.client.Cwindow;
 public class Main {
     public static void main(String[] args) {
         Swindow serverWindow = new Swindow();
-        Cwindow clientWindow = new Cwindow(serverWindow);
+        Cwindow client1 = new Cwindow(serverWindow);
+        Cwindow client2 = new Cwindow(serverWindow);
     }
 }

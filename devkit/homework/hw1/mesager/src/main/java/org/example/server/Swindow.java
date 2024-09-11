@@ -33,7 +33,6 @@ public class Swindow extends JFrame{
                 backEnd.srvStartStop(true);
                 backEnd.setLogMessage("Старт сервер");
                 backEnd.getLogMessage(logMessage);
-                //logMessage.setText(logMessage.getText() + backEnd.getStatus("server") + "\n");
             }
         });
 
@@ -44,7 +43,6 @@ public class Swindow extends JFrame{
                 backEnd.srvStartStop(false);
                 backEnd.setLogMessage("Stop server.");
                 backEnd.getLogMessage(logMessage);
-                //logMessage.setText(logMessage.getText() + backEnd.getStatus("server") + "\n");
             }
         });
 
@@ -55,6 +53,8 @@ public class Swindow extends JFrame{
         panBtn.add(btnStop);
         add(panBtn, BorderLayout.SOUTH);
         add(scrollMessage);
+
+        backEnd.getLogMessage(logMessage);
 
         setVisible(true);
     }

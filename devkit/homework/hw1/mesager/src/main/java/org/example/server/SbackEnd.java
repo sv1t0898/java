@@ -38,7 +38,7 @@ public class SbackEnd implements connection {
     public void getLogMessage(JTextArea logMessage) {
         String entr = "";
         for(Map.Entry<Integer, String> entry : this.logMessage.entrySet()){
-            entr += entry.getKey() + entry.getValue() + "\n";
+            entr += entry.getValue() + "\n";
         }
         logMessage.setText(entr);
 

@@ -27,12 +27,12 @@ public class CbackEnd implements connection {
 
     @Override
     public void getLogMessage(JTextArea logMessage) {
-
+        serverBackend.getLogMessage(logMessage);
     }
 
     @Override
     public void setLogMessage(String message) {
-
+        serverBackend.setLogMessage(message);
     }
     public void getSrvStatus(){
         System.out.println(serverStatus);
