@@ -31,7 +31,7 @@ public class Control {
         return coutnForks;
     }
 
-    public Boolean takeFork(int numberFork) {
+    public synchronized Boolean takeFork(int numberFork) {
         if (fork.length != numberFork) {
             if (fork[numberFork]) {
                 return !(fork[numberFork] = !fork[numberFork]);
@@ -47,7 +47,7 @@ public class Control {
         }
     }
 
-    public Boolean putFork(int numberFork) {
+    public synchronized Boolean putFork(int numberFork) {
         if (fork.length != numberFork) {
             if (!fork[numberFork]) {
                 return !(fork[numberFork] = !fork[numberFork]);

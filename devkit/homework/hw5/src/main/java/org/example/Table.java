@@ -11,7 +11,7 @@ public class Table extends Thread{
 
     public Table(){
         control = new Control();
-        сounterFood = new CountDownLatch(5);
+        сounterFood = new CountDownLatch(15);
         philosophers.add(new Philosopher(3, "Вася", сounterFood, control));
         philosophers.add(new Philosopher(3, "Петя", сounterFood, control));
         philosophers.add(new Philosopher(3, "Коля", сounterFood, control));
@@ -25,15 +25,6 @@ public class Table extends Thread{
             for (Philosopher philosopher : philosophers) {
                 philosopher.start();
             }
-//            wait();
-//            for (Philosopher philosopher : philosophers) {
-//                philosopher.start();
-//            }
-//            wait();
-//            for (Philosopher philosopher : philosophers) {
-//                philosopher.start();
-//            }
-
             сounterFood.await();
             System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         } catch (InterruptedException e) {
