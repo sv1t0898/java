@@ -4,9 +4,15 @@ import java.util.Random;
 
 public class ShowBegins {
 
-    private static Random rand = new Random();
+    private static final Random rand = new Random();
+    Statistics statistics;
 
     public ShowBegins() {
+        statistics = new Statistics();
+
+    }
+
+    public void begins(){
         Doors doors = new Doors();
         System.out.println(doors);
         Monty monty = new Monty(doors);
@@ -21,6 +27,12 @@ public class ShowBegins {
         }else{
             System.out.println("Игрок решил не менять выбор.");
         }
-        System.out.printf(doors.getDoors()[doors.getSelectedDoor()] ? "Поздравим игрока он победил!!!!!" : "Эх...неудача.");
+        System.out.printf(doors.getDoors()[doors.getSelectedDoor()] ? "Поздравим игрока он победил!!!!!\n" : "Эх...неудача.\n");
+        statistics.addResult(String.valueOf(doors.getDoors()[doors.getSelectedDoor()]));
+    }
+
+    public String getStatistics(){
+        System.out.println(statistics);
+        return statistics.toString();
     }
 }
