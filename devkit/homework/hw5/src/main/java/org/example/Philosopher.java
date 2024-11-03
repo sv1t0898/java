@@ -36,12 +36,8 @@ public class Philosopher extends Thread{
 
     @Override
     public void run() {
-        System.out.println(Arrays.toString(control.getFork()) + id );
-        synchronized (control) {            // ??????????
-            eat();
-        }
+        eat();
         System.out.println(Arrays.toString(control.getFork()) + id + handLeft + handRight + "\n");
-
     }
 
     private void eat(){
@@ -49,19 +45,21 @@ public class Philosopher extends Thread{
             while (countHunger > 0 ) {
                 setHandLeft(control.takeFork(id));
                 setHandRight(control.takeFork(id + 1));
-                if (handLeft && handRight) {
+                if (!handLeft || !handRight) {
+                    setHandLeft(control.putFork(id));
+                    setHandRight(control.putFork(id + 1));
+                }else {
                     System.out.printf("Филосов %s берет вилки.\n", name);
+                    System.out.println(Arrays.toString(control.getFork()) + id + "!" );
                     System.out.printf("%s.Филосов %s кушает.\n", id, name);
-                    Thread.sleep(new Random().nextInt(2, 5) * 1000L);
+                    Thread.sleep(new Random().nextInt(5, 10) * 1000L);
                     countHunger--;
                     сounterFood.countDown();
                     setHandLeft(control.putFork(id));
                     setHandRight(control.putFork(id + 1));
                     System.out.printf("Филосов %s вернул вилки.\n", name);
-
                     System.out.printf("Филосов %s размышляет...\n", name);
                     Thread.sleep(new Random().nextInt(2, 7) * 1000L);
-                } else {
                     //System.out.printf("Филосов %s размышляет...\n", name);
                     //System.out.printf("Филосов %s наелся... размышляет...\n", name);
                 }
