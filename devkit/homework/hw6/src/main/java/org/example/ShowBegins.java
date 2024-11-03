@@ -12,7 +12,18 @@ public class ShowBegins {
 
     }
 
-    public void begins(){
+    public void startWithRecordStatistics(){
+        Doors doors = new Doors();
+        Monty monty = new Monty(doors);
+        Player player = new Player(doors);
+        monty.montyOpensDoor();
+        if(rand.nextBoolean()) {
+            player.selectedDoor();
+        }
+        statistics.addResult(String.valueOf(doors.getDoors()[doors.getSelectedDoor()]));
+    }
+
+    public void startWithOutputonScreen(){
         Doors doors = new Doors();
         System.out.println(doors);
         Monty monty = new Monty(doors);
@@ -28,11 +39,10 @@ public class ShowBegins {
             System.out.println("Игрок решил не менять выбор.");
         }
         System.out.printf(doors.getDoors()[doors.getSelectedDoor()] ? "Поздравим игрока он победил!!!!!\n" : "Эх...неудача.\n");
-        statistics.addResult(String.valueOf(doors.getDoors()[doors.getSelectedDoor()]));
     }
 
-    public String getStatistics(){
-        System.out.println(statistics);
-        return statistics.toString();
+
+    public void getStatistics(){
+        System.out.println(statistics.getStatistics());
     }
 }

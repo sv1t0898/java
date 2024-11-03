@@ -7,8 +7,8 @@ public class Doors {
 
     private int selectedDoor;
     private int openedDoor = -1;
-    private int winningDoor;
-    private Boolean[] doors = new Boolean[3];
+    private final int winningDoor;
+    private final Boolean[] doors = new Boolean[3];
 
     public Doors(){
         this.winningDoor = new Random().nextInt(doors.length);
