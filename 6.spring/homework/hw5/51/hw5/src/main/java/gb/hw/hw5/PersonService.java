@@ -1,0 +1,34 @@
+package gb.hw.hw5;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class PersonService {
+
+    @Autowired
+    private final PersonRepository personList;
+
+    public PersonService(PersonRepository personList) {
+        this.personList = personList;
+    }
+
+    public List<Person> getAllPersons() {
+        return personList.findAll();
+    }
+
+    public Optional<Person> getPersonById(Long id) {
+        return personList.findById(id);
+    }
+
+    public List<Person> addAllPerson(List<Person> personList) {
+        return this.personList.saveAll(personList);
+    }
+
+    public Person save(Person person) {
+        return personList.save(person);
+    }
+}
