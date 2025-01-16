@@ -20,8 +20,8 @@ public class PersonService {
         return personList.findAll();
     }
 
-    public Optional<Person> getPersonById(Long id) {
-        return personList.findById(id);
+    public Person getPersonById(Long id) {
+        return personList.getReferenceById(id);
     }
 
     public List<Person> addAllPerson(List<Person> personList) {

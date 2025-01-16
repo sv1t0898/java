@@ -1,0 +1,18 @@
+<html>
+
+<head>
+    <title>Person</title>
+</head>
+
+<body>
+    <h1>Person <span th:text="${p.name}"></span></h1>
+    <p>ID: <span th:text="${p.id}"></span></p>
+    <p>Name: <span th:text="${p.name}"></span></p>
+    <p>YairBirth: <span th:text="${p.yairBirth}"></span></p>
+    <p>Phone: <span th:text="${p.phone}"></span></p>
+    <p>City: <span th:text="${p.city}"></span></p>
+    <p></p>
+    <p><a th:href="@{/persons/{id}(id=${p.id})}">Delete</a></p>
+</body>
+
+</html>

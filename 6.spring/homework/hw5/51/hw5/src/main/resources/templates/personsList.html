@@ -1,0 +1,25 @@
+<html>
+
+<head>
+    <title>Person List</title></head>
+
+<body>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Yair Birth</th>
+            <th>Phone</th>
+            <th>City</th>
+        </tr>
+        <tr th:each="person: ${personList}">
+            <th th:text="${person.id}"></th>
+            <td><a th:href="@{/persons/{id}(id=${person.id})}" th:text="${person.name}"></a></td>
+            <td th:text="${person.yairBirth}"></td>
+            <td th:text="${person.phone}"></td>
+            <td th:text="${person.city}"></td>
+        </tr>
+    </table>
+</body>
+
+</html>

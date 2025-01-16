@@ -1,12 +1,14 @@
 package gb.hw.hw5;
 
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/persons")
 public class PersonController {
 
@@ -17,18 +19,21 @@ public class PersonController {
     }
 
     @GetMapping
-    public List<Person> listPersons(){
-        return personService.getAllPersons();
+    public String listPersons(Model model){
+        model.addAttribute("personList", personService.getAllPersons());
+        return "personsList";
     }
-
+//
     @GetMapping("/{id}")
-    public Optional<Person> getPersonById(@PathVariable("id") Long id){
-        return personService.getPersonById(id);
+    public String getPersonById(@PathVariable("id") Long id, Model model){
+        model.addAttribute("p", personService.getPersonById(id));
+        return "person";
     }
 
     @PostMapping
-    public List<Person> addAllPerson(@RequestBody List<Person> personList){
-        return personService.addAllPerson(personList);
+    public String addAllPerson(@RequestBody List<Person> personList, Model model){
+        model.addAttribute("personList", personService.addAllPerson(personList));
+        return "personsList";
     }
 
     @PutMapping("/{id}")
