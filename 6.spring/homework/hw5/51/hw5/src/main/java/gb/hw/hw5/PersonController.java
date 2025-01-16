@@ -37,6 +37,16 @@ public class PersonController {
         return personService.save(person);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteByid(@PathVariable Long id){
+        personService.deleteById(id);
+    }
+
+    @DeleteMapping
+    public void deleteAll(){
+        personService.deleteAll();
+    }
+
 
 
 
